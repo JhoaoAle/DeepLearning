@@ -1,69 +1,79 @@
 
-## Table of Contents
-  * [Table of Contents](#table-of-contents)  
-  * [Project Structure](#project-structure) 
+---
+# DeepLearning - LSC Hand Sign Recognition
 
+**Author:** Jhoao Alejandro Martinez
+
+
+
+## Project Overview
+
+This project builds a deep learning pipeline to recognize letters from **Lengua de Señas Colombiana (LSC)** using images of hand signs. It consists of:
+
+- Hand detection in video streams (object detection)
+- Classification of detected hand regions into LSC letters using a CNN
+- Real-time webcam application for live predictions
+- Visualization tools for inspecting how the model processes images
+
+---
 
 
 
 ## Project Structure
 
 ```
-DeepLearning/
-│
-├── configs/                               # YAML configs for experiments
-│   ├── classification_config.yaml         # Hyperparameters for classifier (e.g. learning rate, epochs)
-│   └── detection_config.yaml              # Settings for detection model (e.g. threshold, model path)
-│
-├── data/                                  # All datasets and model artifacts
-│   ├── annotations/                       # Label files, e.g. bounding boxes, classes
-│   ├── external/                          # Downloaded datasets, pretrained weights
-│   ├── models/                            # Saved trained model files (.h5, .pt, etc.)
-│   ├── processed/                         # Cropped hand images, cleaned datasets
-│   ├── raw/                               # Raw video/image data as originally collected
-│   └── results/                           # Outputs like predictions, logs, metrics
-│
-├── realtime_app/                          # Local real-time webcam app
-│   └── webcam_app.py                      # Script for live webcam detection & classification
-│
-├── scripts/                               # CLI scripts for reproducible runs
-│   ├── run_detection.py                   # Script to run hand detection on data
-│   ├── run_inference.py                   # Script to perform inference using trained models
-│   └── run_training.py                    # Script to train models
-│
-├── src/                                   # Main Python package with core logic
-│   └── lsc_classifier/                    # Your project’s Python package
-│       │
-│       ├── classification/                # CNN architecture and classification logic
-│       │   ├── model.py                   # Defines your CNN model
-│       │   ├── predict.py                 # Functions to run predictions using the trained model
-│       │   ├── train.py                   # Code to train the classifier
-│       │
-│       ├── data/                          # Data handling and preprocessing
-│       │   ├── dataset.py                 # Dataset classes for loading training/test data
-│       │   ├── transformations.py         # Data augmentation and preprocessing utilities
-│       │
-│       ├── detection/                     # Hand detection code
-│       │   ├── detector.py                # Code to load and run object detector (e.g. YOLO, Faster R-CNN)
-│       │   ├── utils.py                   # Helper functions specific to detection
-│       │
-│       ├── utils/                         # Miscellaneous utilities
-│       │   ├── helpers.py                 # General-purpose helper functions
-│       │
-│       ├── visualization/                 # Tools for visual outputs
-│       │   ├── viz_utils.py               # Draw bounding boxes, plot metrics, visualize predictions
-│       │
-│       └── __init__.py                    # Makes this a Python package
-│
-├── tests/                                 # Unit and integration tests
-│   ├── test_detector.py                   # Tests for hand detection code
-│   ├── test_model.py                      # Tests for classification model
-│   └── test_pipeline.py                   # Tests for the end-to-end pipeline
-│
-├── venv/                                  # Virtual environment for dependencies
-│
-├── .gitignore                             # Files/folders to exclude from version control
-├── pyproject.toml                         # Project metadata and dependencies (PEP 518/PEP 621)
-├── README.md                              # Project overview and instructions
-└── requirements.txt                       # List of Python package dependencies
+└── DeepLearning
+    └── .kaggle
+    └── configs
+        ├── classification_config.yaml
+        ├── detection_config.yaml
+    └── data
+        └── annotations
+        └── external
+        └── models
+        └── processed
+        └── raw
+        └── results
+    └── notebooks
+        ├── visualize_activations.ipynb
+    └── realtime_app
+        ├── webcam_app.py
+    └── scripts
+        ├── 1_download_data.py
+        ├── 2_split_dataset.py
+        ├── 3_test_data_loader.py
+        ├── run_detection.py
+        ├── run_inference.py
+        ├── run_training.py
+    └── src
+        └── lsc_classifier
+            └── __pycache__
+            └── classification
+                └── __pycache__
+                ├── model.py
+                ├── predict.py
+                ├── train.py
+            └── data
+                └── __pycache__
+                ├── dataset.py
+                ├── transformations.py
+            └── detection
+                ├── detector.py
+                ├── utils.py
+            └── utils
+                ├── helpers.py
+            └── visualization
+                └── __pycache__
+                ├── viz_utils.py
+            ├── __init__.py
+    └── tests
+        ├── test_detector.py
+        ├── test_model.py
+        ├── test_pipeline.py
+    ├── .gitignore
+    ├── pyproject.toml
+    ├── README.md
+    └── requirements.txt
 ```
+
+
